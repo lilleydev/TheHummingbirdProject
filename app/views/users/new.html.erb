@@ -1,6 +1,6 @@
 signup
 
-<%= form_for(@user) do |f| %>
+<%= form_for(@user, url: '/signup') do |f| %>
 
 <div>
   <%= f.label :username %>
@@ -14,7 +14,7 @@ signup
 
 <div>
   <%= f.label :password %>
-  <%= f.text_field :password %>
+  <%= f.password_field :password %>
 </div>
 
 <div>
