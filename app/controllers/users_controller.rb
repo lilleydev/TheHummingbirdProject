@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def new
-    '/signup'
+    @user = User.new
   end
 
   def create; end
