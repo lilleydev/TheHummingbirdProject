@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to "/users/#{user.id}"
     else
+      flash[:message] = 'Unable to verify login information, please try again'
       redirect_to '/login'
     end
   end
