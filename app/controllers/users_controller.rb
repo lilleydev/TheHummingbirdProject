@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_if_logged_out
     @user = User.find_by_id(params[:id])
     redirect_to '/' unless @user
   end
