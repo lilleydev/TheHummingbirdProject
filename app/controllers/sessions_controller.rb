@@ -1,11 +1,6 @@
 class SessionsController < ApplicationController
   def home; end
 
-  def destroy
-    session.clear
-    redirect_to root_path
-  end
-
   def new; end
 
   def create
@@ -15,7 +10,12 @@ class SessionsController < ApplicationController
       redirect_to "/users/#{user.id}"
     else
       flash[:message] = 'Unable to verify login information, please try again'
-      redirect_to '/login'
+      redirect_to login_path
     end
+  end
+
+  def destroy
+    session.clear
+    redirect_to root_path
   end
 end
