@@ -1,5 +1,8 @@
 all projects page
 
-<% @projects.each do |p| %>
-<%= p.name %>
-<% end %>
+<ul>
+  <% @projects.each do |p| %>
+  <li><%= p.name %> </li>
+  <br><%= p.description %> <br>
+  <% end %>
+</ul>
