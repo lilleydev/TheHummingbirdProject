@@ -13,6 +13,9 @@
 <body>
 
   <div>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <% if logged_in? %>
     <%= link_to 'New Project', new_project_path %> |
     <%= link_to 'All Projects', projects_path %> |

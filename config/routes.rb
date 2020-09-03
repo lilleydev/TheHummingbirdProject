@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'sessions#home'
+  # devise_for :users
+  root to: 'sessions#home'
 
   # #add custom routes here
   get '/signup' => 'users#new'
