@@ -35,3 +35,5 @@ Reviews (Feedback)
 - belongs_to :project
 - belongs_to :user
 - attributes: content:text_area (limit characters as a feature)
+
+should be ignored\*
