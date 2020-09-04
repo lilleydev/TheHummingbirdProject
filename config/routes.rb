@@ -4,14 +4,18 @@ Rails.application.routes.draw do
 
   root to: 'sessions#home'
   devise_for :users
+
+  as :user do
+    get '/signin', to: 'devise/sessions#new'
+  end
   # #add custom routes here
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
+  # get '/signup' => 'users#new'
+  # post '/signup' => 'users#create'
 
-  get '/login' => 'sessions#new'
-  post '/login' => 'sessions#create'
+  # get '/login' => 'sessions#new'
+  # post '/login' => 'sessions#create'
 
-  delete '/logout' => 'sessions#destroy'
+  # delete '/logout' => 'sessions#destroy'
 
   resources :reviews
   resources :user_projects
