@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'sessions#home'
   devise_for :users
 
+  get '/auth/google_oauth2/callback'
   as :user do
     get '/signin', to: 'devise/sessions#new'
   end
