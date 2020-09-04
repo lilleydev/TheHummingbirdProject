@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'registrations/Devise::RegistrationsController'
-  devise_for :users, controllers: { registrations: 'registrations' }
+  # get 'registrations/Devise::RegistrationsController'
+  # devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'sessions#home'
-
+  devise_for :users
   # #add custom routes here
   get '/signup' => 'users#new'
   post '/signup' => 'users#create'
