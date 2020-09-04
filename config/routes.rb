@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'registrations/Devise::RegistrationsController'
-  # devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
+
   root to: 'sessions#home'
 
   # #add custom routes here
