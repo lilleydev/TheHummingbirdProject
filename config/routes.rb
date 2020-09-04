@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   root to: 'sessions#home'
   devise_for :users
 
-  get '/auth/google_oauth2/callback'
+  # get '/auth/google_oauth2/callback', to
   as :user do
     get '/signin', to: 'devise/sessions#new'
+    get '/sign_out', to: 'devise/sessions#destroy'
   end
   # #add custom routes here
   # get '/signup' => 'users#new'
@@ -21,6 +22,6 @@ Rails.application.routes.draw do
   resources :reviews
   resources :user_projects
   resources :projects
-  resources :users
+  resources :users, except: %i[new create destroy]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
