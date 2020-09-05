@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only %i[show, edit, update, destroy]
+  before_action :set_project, only: %i[show edit update destroy]
   def new
     @project = Project.new
   end
@@ -18,13 +18,9 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def show
-    
-  end
+  def show; end
 
-  def edit
-    
-  end
+  def edit; end
 
   def update
     respond_to do |format|
@@ -37,6 +33,8 @@ class ProjectsController < ApplicationController
       end
     end
   end
+
+  def destroy; end
 
   private
 
