@@ -12,3 +12,6 @@
 
 <h4>Need to Edit? </h4>
 <%= link_to "Update info", edit_project_path(@project) %>
+
+<h4>Drop Project</h4>
+<%= link_to 'Delete Project', project_path(@project), method: :delete %>
