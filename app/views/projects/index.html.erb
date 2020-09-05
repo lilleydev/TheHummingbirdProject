@@ -3,6 +3,9 @@ all projects page
 <ul>
   <% @projects.each do |p| %>
   <li><%= p.name %> </li>
-  <br><%= p.description %> <br>
+  <ul>
+    <li><%= p.description %> </li>
+    <li><%= p.creator.first_name %></li>
+  </ul>
   <% end %>
 </ul>
