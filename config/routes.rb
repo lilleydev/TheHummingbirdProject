@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get '/signin', to: 'devise/sessions#new'
     get '/sign_out', to: 'devise/sessions#destroy'
   end
+
+  get '/auth/google', to: 'sessions#google'
   # #add custom routes here
   # get '/signup' => 'users#new'
   # post '/signup' => 'users#create'
