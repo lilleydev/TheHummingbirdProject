@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   root to: 'sessions#home'
 
   # get '/auth/google_oauth2/callback', to: 'omniauth_callbacks#google_oauth2'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks#google_oauth2' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
+  # devise_scope :user do
+  #   delete 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session
+  # end
 
   as :user do
     get '/signin', to: 'devise/sessions#new'
