@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only %i[show, edit, update, destroy]
   def new
     @project = Project.new
   end
@@ -18,15 +19,14 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by(params[:id])
+    
   end
 
   def edit
-    @project = Project.find_by(params[:id])
+    
   end
 
   def update
-    @project = Project.find_by(params[:id])
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -39,6 +39,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+
+  def set_project
+    @project = Project.find_by(params[:id])
+  end
 
   def project_params
     params.require(:project).permit(:name, :description)
