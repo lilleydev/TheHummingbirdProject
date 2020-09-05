@@ -21,6 +21,8 @@ class ProjectsController < ApplicationController
     @project = Project.find_by(params[:id])
   end
 
+  def edit; end
+
   private
 
   def project_params

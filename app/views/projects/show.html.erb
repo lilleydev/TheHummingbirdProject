@@ -9,3 +9,6 @@
 
 <h4>Project Creator</h4>
 <%= @project.creator.first_name %>
+
+<h4>Need to Edit? </h4>
+<%= link_to "Update info", edit_project_path(@project) %>
