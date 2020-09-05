@@ -3,15 +3,15 @@ Rails.application.routes.draw do
   # devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'sessions#home'
-  devise_for :users
 
-  # get '/auth/google_oauth2/callback', to
+  # get '/auth/google_oauth2/callback', to: 'omniauth_callbacks#google_oauth2'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks#google_oauth2' }
+
   as :user do
     get '/signin', to: 'devise/sessions#new'
     get '/sign_out', to: 'devise/sessions#destroy'
   end
 
-  get '/auth/google', to: 'sessions#google'
   # #add custom routes here
   # get '/signup' => 'users#new'
   # post '/signup' => 'users#create'
