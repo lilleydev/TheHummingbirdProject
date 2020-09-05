@@ -2,7 +2,7 @@ all projects page
 
 <ul>
   <% @projects.each do |p| %>
-  <li><%= p.name %> </li>
+  <li><%= link_to p.name, project_path(p) %> </li>
   <ul>
     <li><%= p.description %> </li>
     <li><%= p.creator.first_name %></li>
