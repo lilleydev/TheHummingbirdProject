@@ -21,7 +21,22 @@ class ProjectsController < ApplicationController
     @project = Project.find_by(params[:id])
   end
 
-  def edit; end
+  def edit
+    @project = Project.find_by(params[:id])
+  end
+
+  def update
+    @project = Project.find_by(params[:id])
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
+        format.json { render :show, status: :ok, location: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: @project.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
 
