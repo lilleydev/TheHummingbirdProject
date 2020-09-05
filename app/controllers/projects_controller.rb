@@ -5,7 +5,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    binding.pry
     @project = current_user.created_projects.build(project_params)
     if @project.save
       redirect_to projects_path

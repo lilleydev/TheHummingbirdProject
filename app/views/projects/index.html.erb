@@ -4,6 +4,7 @@ all projects page
   <% @projects.each do |p| %>
   <li><%= link_to p.name, project_path(p) %> </li>
   <ul>
+    <li><%= link_to 'See more info', project_path(p.id) %> </li>
     <li><%= p.description %> </li>
     <li><%= p.creator.first_name %></li>
   </ul>
