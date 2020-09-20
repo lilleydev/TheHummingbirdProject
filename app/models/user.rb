@@ -8,44 +8,14 @@ class User < ApplicationRecord
   has_many :projects, through: :user_projects
   has_many :created_projects, class_name: 'Project'
 
-  def self.find_for_google_oauth2(access_token, _signed_in_resource = nil)
-    # byebug
+  def self.from_omniauth(access_token)
     data = access_token.info
-    user = User.where(provider: access_token.provider, uid: access_token.uid).first
-    if user
-      user
-    else
-      registered_user = User.where(email: access_token.info.email).first
-      if registered_user
-        registered_user
-      else
-        user = User.create(first_name: data['first_name'], second_name: data['last_name'],
-                           provider: access_token.provider,
-                           email: data['email'],
-                           uid: access_token.uid,
-                           password: Devise.friendly_token[0, 20])
-      end
-    end
-      end
+    user = User.where(email: data['email']).first
 
-  # def self.find_or_create_from_auth_hash(auth)
-  #   where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-  #     user.provider = auth.provider
-  #     user.uid = auth.uid
-  #     user.first_name = auth.info.first_name
-  #     user.last_name = auth.info.last_name
-  #     user.email = auth.info.email
-  #     user.picture = auth.info.image
-  #     user.save!
-  #   end
-  # end
-
-  # def self.from_omniauth(auth)
-  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-  #     user.provider = auth.provider
-  #     user.uid = auth.uid
-  #     user.email = auth.info.email
-  #     user.password = Devise.friendly_token[0, 20]
-  #   end
-  # end
+    # Uncomment the section below if you want users to be created if they don't exist
+    user ||= User.create(name: data['name'],
+                         email: data['email'],
+                         password: Devise.friendly_token[0, 20])
+    user
+  end
 end

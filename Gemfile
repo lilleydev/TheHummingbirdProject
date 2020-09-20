@@ -26,13 +26,18 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-oauth2', '~> 1.4'
 gem 'dotenv-rails'
+
+gem 'rb-readline'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+
+# set up authentication, roles and additional logic
 gem 'rolify'
 gem 'devise', '~> 4.7', '>= 4.7.2'
+gem 'authority'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
